@@ -15,7 +15,6 @@ KH Team Project_BookDream
 - 윤동환 :
 - 양현정 :
 - 차승윤 :
-- 천예준 :
 - 백기렬 :
 - 안성연 :
 
