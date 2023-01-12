@@ -16,7 +16,7 @@
 	</typeAliases> -->
 	
 
-	<!-- Sql Mapper 설정 --> 
+	<!-- Sql Mapper 설정  
 	<mappers>
 		<mapper resource="mappings/user-mapping.xml" />
 		<mapper resource="mappings/member-mapping.xml" />
@@ -27,6 +27,7 @@
 		<mapper resource="mappings/pay-mapping.xml" />
 		<mapper resource="mappings/order-mapping.xml" />
 	</mappers>
+	-->
 	
 	
 </configuration>
