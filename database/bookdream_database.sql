@@ -2,6 +2,7 @@ create user bookdream identified by bookdream;
 grant connect, resource, create view to bookdream;
 connect bookdream/bookdream;
 
+-- User Table
 drop table USERS;
 
 create table USERS (
@@ -23,6 +24,7 @@ create sequence user_seq increment by 1 start with 1;
 
 select * from USERS;
 
+-- Kakao User Table
 drop table kakao_table;
 create table kakao_table(
     k_number number primary key,
@@ -37,6 +39,7 @@ create sequence seq_id increment by 1 start with 1;
 
 select * from kakao_table;
 
+-- Review Table
 drop table review;
 
 create table review(
@@ -52,6 +55,7 @@ constraint pk_riview PRIMARY KEY (review_no)
 
 select * from review;
 
+-- Pay Table
 drop table pay;
 
 CREATE TABLE PAY (
@@ -66,6 +70,7 @@ CREATE TABLE PAY (
 
 select * from pay;
 
+-- Orders Table
 drop table orders;
 
 CREATE TABLE orders(
@@ -83,5 +88,26 @@ CREATE TABLE orders(
 );
 
 select * from orders;
+
+-- Book Table(xlsx 삽입 노션 확인)
+
+drop table BOOK;
+
+create table BOOK (
+    BOOK_NO      number(10) not null,
+    ISBN_NO      number(15),
+    TITLE        varchar2(500) ,
+    AUTHOR       varchar2(500) not null,
+    PUBLISHER    varchar2(500) not null,
+    book_CONTENT    varchar2(3000),
+    STOCK        number(20),
+    BOOK_PRICE   number(10),
+    BOOK_IMG     varchar(500) not null,
+    PBLIC_DATE   date not null,
+    BOOK_CATEGORY varchar(500) not null,
+    constraint PK_BOOK primary key (BOOK_NO)
+);
+
+select * from BOOK;
 
 commit
