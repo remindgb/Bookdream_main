@@ -12,8 +12,7 @@
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener
-		</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
 	<!-- log4jRefreshInterval 을 세팅하면 log4j.xml 에서 level 이나 로그출력 패턴 변경을 하면 자동 
@@ -30,15 +29,13 @@
 	<!-- listener-class에 등록되어 있는 Log4jConfigListener는 log4j라는 로깅 프레임워크를 초기화 
 		하는 클래스이다. 이 클래스를 초기화 할 때 log4jConfigLocation context-param을 넘겨준다. -->
 	<listener>
-		<listener-class>org.springframework.web.util.Log4jConfigListener
-		</listener-class>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet
-		</servlet-class>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
@@ -55,8 +52,7 @@
 	<!-- UTF-8 Filter -->
 	<filter>
 		<filter-name>characterEncoding</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
-		</filter-class>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
