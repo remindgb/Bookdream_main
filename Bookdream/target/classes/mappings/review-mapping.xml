@@ -20,5 +20,15 @@
 		FROM review where book_no = #{book_no}
 	</select>
 	
+	<insert id="insertReview">
+		INSERT INTO review (review_no,user_no,book_no,review_content,review_date,review_recommend,review_star)
+		values ( (select max(review_no)+1 from review) ,#{user_no}, #{book_no}, #{review_content}, sysdate ,#{review_recommend},#{review_star})
+	</insert>
+	
+	<update id="updateReviewRecommend">
+		UPDATE review 
+		SET review_recommend = (SELECT (review_recommend + 1) FROM review WHERE review_no = #{review_no}) 
+		WHERE review_no = #{review_no}
+	</update>
 	
 </mapper>

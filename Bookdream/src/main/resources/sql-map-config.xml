@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+ 
+
+<configuration>
+
+	<!-- Alias 설정-->
+	<typeAliases>
+		<typeAlias alias="book" type="com.spring.bookdream.vo.BookVO"></typeAlias>
+		<typeAlias alias="review" type="com.spring.bookdream.vo.ReviewVO"></typeAlias>
+		<typeAlias alias="user" type="com.spring.bookdream.vo.UserVO"></typeAlias>
+		<typeAlias alias="cart" type="com.spring.bookdream.vo.CartVO"></typeAlias>
+		<typeAlias alias="orderitem" type="com.spring.bookdream.vo.OrderitemVO"></typeAlias>
+		<typeAlias alias="pay" type="com.spring.bookdream.vo.PayVO"></typeAlias> 
+		<typeAlias alias="order" type="com.spring.bookdream.vo.OrderVO"></typeAlias>
+		<typeAlias alias="address" type="com.spring.bookdream.vo.AddressVO"></typeAlias>
+	</typeAliases> 
+	
+
+	<!-- Sql Mapper 설정  -->
+	<mappers>
+
+		<mapper resource="mappings/book-mapping.xml" />
+		<mapper resource="mappings/review-mapping.xml" />
+		<mapper resource="mappings/user-mapping.xml" />
+		<mapper resource="mappings/cart-mapping.xml" />
+		<mapper resource="mappings/orderitem-mpping.xml" />
+		<mapper resource="mappings/pay-mapping.xml" /> 
+		<mapper resource="mappings/order-mapping.xml" />
+		<mapper resource="mappings/address-mapping.xml" />
+	</mappers>
+	
+	
+	
+</configuration>
+

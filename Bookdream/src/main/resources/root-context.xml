@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:component-scan base-package="com.spring..*"></context:component-scan>
+
+	<!-- DataSource 설정 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+		<property name="username" value="bookdream" />
+		<property name="password" value="bookdream" />
+	</bean>
+
+	<!-- mybatis -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation"	value="classpath:sql-map-config.xml"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"></constructor-arg>
+	</bean>
+	
+	<!-- oauth2 Login Naver API -->
+	<bean id="naverClientID" class="java.lang.String">
+		<constructor-arg value="0328Vi7efumpXAgBjKZA" />
+	</bean>
+	<bean id="naverClientSecret" class="java.lang.String">
+		<constructor-arg value="W2upi_g63s" />
+	</bean>
+	<bean id="naverRedirectUrl" class="java.lang.String">
+		<constructor-arg value="http://localhost:8000/auth/naver/callback" />
+	</bean>
+	<bean id="naverSns" class="com.spring.bookdream.auth.SnsValue">
+		<constructor-arg value="naver"/>		
+		<constructor-arg ref="naverClientID"/>		
+		<constructor-arg ref="naverClientSecret"/>		
+		<constructor-arg ref="naverRedirectUrl"/>		
+	</bean>
+	
+	<!-- oauth2 Login Google API -->
+	<bean id="googleClientID" class="java.lang.String">
+		<constructor-arg value="759629996127-2168hvg19ogj7kah4thgo16a2seoc50q.apps.googleusercontent.com" />
+	</bean>
+	<bean id="googleClientSecret" class="java.lang.String">
+		<constructor-arg value="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" />
+	</bean>
+	<bean id="googleRedirectUrl" class="java.lang.String">
+		<constructor-arg value="http://localhost:8000/auth/google/callback" />
+	</bean>
+	<bean id="googleSns" class="com.spring.bookdream.auth.SnsValue">
+		<constructor-arg value="google"/>		
+		<constructor-arg ref="googleClientID"/>		
+		<constructor-arg ref="googleClientSecret"/>		
+		<constructor-arg ref="googleRedirectUrl"/>		
+	</bean>
+	
+	<!-- google Class Bean설정 추가 -->
+	<!-- 클라이언트ID와 보안비밀 세팅 -->
+	<bean id="googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg ref="googleClientID" />
+		<constructor-arg ref="googleClientSecret" />
+	</bean>
+	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
+	<bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope" value="https://www.googleapis.com/auth/userinfo.email" />
+		<property name="redirectUri" ref="googleRedirectUrl" />
+	</bean>
+	
+	
+</beans>
