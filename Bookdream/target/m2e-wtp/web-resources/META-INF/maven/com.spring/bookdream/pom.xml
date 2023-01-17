@@ -197,45 +197,121 @@
 			<version>3.0.8</version>
 		</dependency>
 		
-		   <!-- Json -->
-      <dependency>
-         <groupId>com.googlecode.json-simple</groupId>
-         <artifactId>json-simple</artifactId>
-         <version>1.1.1</version>
-      </dependency>
+		  <!-- Json -->
+	      <dependency>
+	         <groupId>com.googlecode.json-simple</groupId>
+	         <artifactId>json-simple</artifactId>
+	         <version>1.1.1</version>
+	      </dependency>
+	
+	      <!-- Json -->
+	      <dependency>
+	         <groupId>org.json</groupId>
+	         <artifactId>json</artifactId>
+	         <version>20220924</version>
+	      </dependency>
 
-      <!-- Json -->
-      <dependency>
-         <groupId>org.json</groupId>
-         <artifactId>json</artifactId>
-         <version>20220924</version>
-      </dependency>
+     	 <!-- Json -->
+      	<dependency>
+        	 <groupId>com.fasterxml.jackson.core</groupId>
+        	 <artifactId>jackson-databind</artifactId>
+        	 <version>2.9.6</version>
+      	</dependency>
 
-      <!-- Json -->
-      <dependency>
-         <groupId>com.fasterxml.jackson.core</groupId>
-         <artifactId>jackson-databind</artifactId>
-         <version>2.9.6</version>
-      </dependency>
-
-      <!-- Json -->
-      <dependency>
-         <groupId>org.codehaus.jackson</groupId>
-         <artifactId>jackson-mapper-asl</artifactId>
-         <version>1.4.2</version>
-      </dependency>
+      	<!-- Json -->
+      	<dependency>
+        	 <groupId>org.codehaus.jackson</groupId>
+        	 <artifactId>jackson-mapper-asl</artifactId>
+        	 <version>1.4.2</version>
+      	</dependency>
 		
+		
+		<!-- Google API Dependency -->
+		<dependency>
+	    	<groupId>org.springframework.social</groupId>
+	    	<artifactId>spring-social-google</artifactId>
+            <version>1.0.0.RELEASE</version>
+    	</dependency>
+    	
+    	<!-- oauth2 login -->
+	    <dependency>
+              <groupId>com.github.scribejava</groupId>
+              <artifactId>scribejava-apis</artifactId>
+              <version>5.6.0</version>
+        </dependency>
 
+        <dependency>
+              <groupId>com.github.scribejava</groupId>
+              <artifactId>scribejava-core</artifactId>
+              <version>5.6.0</version>
+        </dependency>
+    	
+    	<!-- jackson-core -->
+    	<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.9</version>
+		</dependency>
+		
+		<!-- Lombok -->		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.22</version>
+			<scope>provided</scope>
+		</dependency>
+		
+	  <!-- gson -->
+      <dependency>
+         <groupId>com.google.code.gson</groupId>
+         <artifactId>gson</artifactId>
+         <version>2.8.6</version>
+      </dependency>
+      
+      <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+      <!-- 메일을 보내는 기능을 가진 라이브러리 -->
+      <dependency>
+          <groupId>javax.mail</groupId>
+          <artifactId>mail</artifactId>
+          <version>1.4.7</version>
+      </dependency>
+      
+      <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+      <!-- 메일 라이브러리 사용을 수월하게 할 수 있도록 스프링에서 제공해주는 라이브러리 -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context-support</artifactId>
+          <version>${org.springframework-version}</version>
+      </dependency>
+      
+      <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-email</artifactId>
+          <version>1.5</version>
+      </dependency>
+      
+      <!-- iamport -->
+      <dependency>
+         <groupId>com.github.iamport</groupId>
+         <artifactId>iamport-rest-client-java</artifactId>
+         <version>0.2.22</version>
+      </dependency>
+            
 	</dependencies>
 
 	<repositories>
-
+		<!-- Oracle Repositories -->
 		<repository>
 			<id>oracle</id>
 			<name>ORACLE JDBC Repository</name>
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
-
+	    <!-- iamport -->
+        <repository>
+        	<id>jitpack.io</id>
+         	<url>https://jitpack.io</url>
+      	</repository>
 	</repositories>
 
 	<build>
