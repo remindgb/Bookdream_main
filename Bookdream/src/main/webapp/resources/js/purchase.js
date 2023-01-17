@@ -88,7 +88,7 @@ function pay_show() {
 				      });		
 				}   
 				
-				const clientKey = 'test_ck_OALnQvDd2VJn771bMENVMj7X41mN';
+				const clientKey = '';
 				var tossPayments = TossPayments(clientKey);		
 				
 				// 다른결제수단 버튼을 눌렀을 경우

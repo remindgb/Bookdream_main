@@ -54,7 +54,7 @@ public class PayController {
 		// Tosspay 결제정보 인증 -> json으로 받아옴
 		HttpRequest request1 = HttpRequest.newBuilder()
 			    .uri(URI.create("https://api.tosspayments.com/v1/payments/confirm"))
-			    .header("Authorization", "Basic dGVzdF9za19CRTkyTEFhNVBWYlJnZ1hsTTBwVjdZbXBYeUpqOg==")
+			    .header("Authorization", "Basic ")
 			    .header("Content-Type", "application/json")
 			    .method("POST", HttpRequest.BodyPublishers.ofString("{\"paymentKey\":\"" + paymentKey + "\",\"" + "amount" + "\":" + amount + "," + "\"" + "orderId\":" + "\"" + orderId + "\"" + "}"))
 			    .build();
