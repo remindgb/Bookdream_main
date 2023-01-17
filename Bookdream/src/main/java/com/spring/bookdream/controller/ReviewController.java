@@ -45,6 +45,7 @@ public class ReviewController {
 
 		//리뷰 추천버튼 클릭
 		@RequestMapping(value = "/updateReviewRecommend")
+		@ResponseBody
 		public int updateReviewRecommend(@RequestParam(value = "review_no") int review_no) {
 			System.out.println("/updateReviewRecommend : " + review_no);
 			return reviewService.updateReviewRecommend(review_no);

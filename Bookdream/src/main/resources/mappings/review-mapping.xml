@@ -25,10 +25,10 @@
 		values ( (select max(review_no)+1 from review) ,#{user_no}, #{book_no}, #{review_content}, sysdate ,#{review_recommend},#{review_star})
 	</insert>
 	
-	<update id="updateReviewRecommend" parameterType="review">
+	<update id="updateReviewRecommend">
 		UPDATE review 
-		SET review_recommend = (SELECT (review_recommend + 1) FROM review WHERE review_no = ${review_no}) 
-		WHERE review_no = ${review_no}
+		SET review_recommend = (SELECT (review_recommend + 1) FROM review WHERE review_no = #{review_no}) 
+		WHERE review_no = #{review_no}
 	</update>
 	
 </mapper>

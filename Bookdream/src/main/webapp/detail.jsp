@@ -97,12 +97,13 @@
 					<div class="d-flex">
 						<div>${review.user_no} </div>
 						<div><fmt:formatDate value="${review.review_date}" pattern="YY-MM-DD (E)" type="date"/>  </div>
-						<div> 추천 (${review.review_recommend}) </div>
-						<div>  리뷰 번호 : ${reivew.review_no}</div>
+						<div> 추천수  (${review.review_recommend}) </div>
+						
 					</div>
 					<div class="mt-2">
-						<button type="button" id="btn_recommend" class="text-center btn btn-outline-dark flex-shrink-0 btn-xs" ><i class="bi bi-hand-thumbs-up"></i> 추천하기
-						</button>
+						<input type="hidden" value="" name="review_no" >
+						<button id="btn_recommend" value="${review.review_no }"  onclick="review_recommend(this.value)" class="text-center btn btn-outline-dark flex-shrink-0 btn-xs" > <i class="bi bi-hand-thumbs-up"> </i> 추천하기 </button>
+					
 					</div>
 					<div>
 					</div>
@@ -123,7 +124,31 @@
 
 <script type="text/javascript">
 
-let review_no = ${review_no};
+function review_recommend(val){
+	alert("추천클릭");
+$.ajax({
+		type: 'get',
+		url: "/updateReviewRecommend?review_no="+val,
+		data : "text" ,
+		contentType: "application/x-www-urlencoded;charset=UTF-8", 
+		processData: false, 
+		cache : false,
+		success: function (data){
+			alert('리뷰를 추천하였습니다.');
+			//리뷰 업데이트를 위해 getbook실행
+			getReview();
+		},
+		error:function(request, status, error){
+			alert('에러');
+			console.log("code: " + request.status)
+        	console.log("message: " + request.responseText)
+        	console.log("error: " + error);
+			
+		}		
+		
+	});
+}	
+
 
 $(function(){
 	let star = 
@@ -131,6 +156,7 @@ $(function(){
 		let star = $('#REVIEW_STAR option:selected').val();
 		console.log(star);
 	});
+	
 	
 
 	$('#btn_review').click(function(){
@@ -170,33 +196,15 @@ $(function(){
 	});//btn_review.click end
 
 	//추천 버튼 클릭
-$(document).on('click','#btn_recommend',function(){
-		$.ajax({
-			type: 'get',
-			url: "/updateReviewRecommend?review_no="+review_no,
-			data : "text" ,
-			contentType: "application/x-www-urlencoded;charset=UTF-8", 
-			processData: false, 
-			cache : false,
-			success: function (data){
-				alert('리뷰를 추천하였습니다.');
-				//리뷰 업데이트를 위해 getbook실행
-				getReview();
-			},
-			error:function(request, status, error){
-				alert('에러');
-				console.log("code: " + request.status)
-	        	console.log("message: " + request.responseText)
-	        	console.log("error: " + error);
-				
-			}		
-			
-		});
-	});	
+
 
 
 
 //review 업데이트를 하기 위한 getbook실행
+
+
+});
+
 function getReview(){
 	$.ajax({
 		type : "get",
@@ -214,9 +222,7 @@ function getReview(){
 			alert("에러 발생");	
 		}
 	});
-};
-
-});
+}
 
 </script>
 
