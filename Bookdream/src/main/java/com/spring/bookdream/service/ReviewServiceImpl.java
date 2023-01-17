@@ -22,4 +22,15 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDAO.getReview(book_no);
 	}
 
+	@Override
+	public void insertReview(ReviewVO vo) {
+		reviewDAO.insertReview(vo);
+		
+	}
+
+	@Override
+	public int updateReviewRecommend(int review_no) {
+		return reviewDAO.updateReviewRecommend(review_no);
+	}
+
 }
